@@ -1,0 +1,113 @@
+@use "../../../styles/variables" as *;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--space-md);
+  background-color: var(--light-bg);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: var(--space-xs);
+  text-align: center;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.login-alert {
+  background-color: #ffecb3; /* Cor de fundo amarelo claro */
+  border-left: 4px solid #ffb400; /* Borda esquerda amarela para destaque */
+  color: #856404;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-md);
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gray-bg);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-login:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-login:disabled {
+  background-color: var(--gray);
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: var(--space-xs);
+}
+
+.alert {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  margin-top: var(--space-md);
+}
+
+.alert-danger {
+  background-color: rgba(var(--danger), 0.1);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}

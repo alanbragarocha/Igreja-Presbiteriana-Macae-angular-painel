@@ -1,0 +1,234 @@
+<div class="financeiro-container">
+  <div class="admin-header">
+    <h2>Gerenciar Informações Financeiras</h2>
+    <a routerLink="/admin" class="btn-voltar">
+      <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>Dados Bancários</h3>
+    <p>Estas informações são exibidas na página de doações/contribuições.</p>
+
+    <form
+      [formGroup]="bancarioForm"
+      (ngSubmit)="salvarDadosBancarios()"
+      class="form"
+    >
+      <div class="form-group">
+        <label for="banco">Banco</label>
+        <input
+          type="text"
+          id="banco"
+          formControlName="banco"
+          class="form-control"
+          [class.is-invalid]="
+            bancarioForm.get('banco')?.invalid &&
+            bancarioForm.get('banco')?.touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            bancarioForm.get('banco')?.invalid &&
+            bancarioForm.get('banco')?.touched
+          "
+        >
+          O nome do banco é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="agencia">Agência</label>
+          <input
+            type="text"
+            id="agencia"
+            formControlName="agencia"
+            class="form-control"
+            [class.is-invalid]="
+              bancarioForm.get('agencia')?.invalid &&
+              bancarioForm.get('agencia')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              bancarioForm.get('agencia')?.invalid &&
+              bancarioForm.get('agencia')?.touched
+            "
+          >
+            A agência é obrigatória.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="conta">Conta</label>
+          <input
+            type="text"
+            id="conta"
+            formControlName="conta"
+            class="form-control"
+            [class.is-invalid]="
+              bancarioForm.get('conta')?.invalid &&
+              bancarioForm.get('conta')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              bancarioForm.get('conta')?.invalid &&
+              bancarioForm.get('conta')?.touched
+            "
+          >
+            A conta é obrigatória.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="titular">Titular</label>
+        <input
+          type="text"
+          id="titular"
+          formControlName="titular"
+          class="form-control"
+          [class.is-invalid]="
+            bancarioForm.get('titular')?.invalid &&
+            bancarioForm.get('titular')?.touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            bancarioForm.get('titular')?.invalid &&
+            bancarioForm.get('titular')?.touched
+          "
+        >
+          O titular é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cnpj">CNPJ</label>
+        <input
+          type="text"
+          id="cnpj"
+          formControlName="cnpj"
+          class="form-control"
+          [class.is-invalid]="
+            bancarioForm.get('cnpj')?.invalid &&
+            bancarioForm.get('cnpj')?.touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            bancarioForm.get('cnpj')?.invalid &&
+            bancarioForm.get('cnpj')?.touched
+          "
+        >
+          O CNPJ é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="bancarioForm.invalid || isSavingBancario"
+        >
+          <span *ngIf="!isSavingBancario">Salvar Dados Bancários</span>
+          <span *ngIf="isSavingBancario">Salvando...</span>
+        </button>
+      </div>
+
+      <div class="alert alert-success" *ngIf="saveSuccessBancario">
+        Dados bancários atualizados com sucesso!
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Informações PIX</h3>
+    <p>Configure a chave PIX para recebimento de contribuições.</p>
+
+    <form [formGroup]="pixForm" (ngSubmit)="salvarDadosPix()" class="form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipo">Tipo de Chave</label>
+          <select
+            id="tipo"
+            formControlName="tipo"
+            class="form-control"
+            [class.is-invalid]="
+              pixForm.get('tipo')?.invalid && pixForm.get('tipo')?.touched
+            "
+          >
+            <option value="CNPJ">CNPJ</option>
+            <option value="CPF">CPF</option>
+            <option value="E-mail">E-mail</option>
+            <option value="Telefone">Telefone</option>
+            <option value="Aleatória">Chave Aleatória</option>
+          </select>
+          <div
+            class="invalid-feedback"
+            *ngIf="pixForm.get('tipo')?.invalid && pixForm.get('tipo')?.touched"
+          >
+            O tipo de chave é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="chave">Chave PIX</label>
+          <input
+            type="text"
+            id="chave"
+            formControlName="chave"
+            class="form-control"
+            [class.is-invalid]="
+              pixForm.get('chave')?.invalid && pixForm.get('chave')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              pixForm.get('chave')?.invalid && pixForm.get('chave')?.touched
+            "
+          >
+            A chave PIX é obrigatória.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="pixForm.invalid || isSavingPix"
+        >
+          <span *ngIf="!isSavingPix">Salvar Dados PIX</span>
+          <span *ngIf="isSavingPix">Salvando...</span>
+        </button>
+      </div>
+
+      <div class="alert alert-success" *ngIf="saveSuccessPix">
+        Dados do PIX atualizados com sucesso!
+      </div>
+    </form>
+  </div>
+
+  <div class="tips-card">
+    <h3>Dicas</h3>
+    <ul>
+      <li>
+        Certifique-se de inserir os dados bancários corretamente para evitar
+        problemas com as contribuições.
+      </li>
+      <li>Para o CNPJ, use o formato XX.XXX.XXX/0001-XX.</li>
+      <li>
+        Verifique se a chave PIX está ativa e vinculada à conta da igreja.
+      </li>
+    </ul>
+  </div>
+</div>

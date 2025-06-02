@@ -1,0 +1,75 @@
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
+@Component({
+  selector: "app-escalas",
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: "./escalas.component.html",
+  styleUrl: "./escalas.component.scss",
+})
+export class EscalasComponent {
+  // CMS - Sistema de gerenciamento de conteúdo
+  cms: { [key: string]: string } = {
+    "escalas-0": "Escalas de Serviço",
+    "escalas-1":
+      "Confira as escalas de serviço da nossa igreja para os próximos cultos e atividades.",
+    "escalas-2": "Escala de Louvor",
+    "escalas-3": "Domingo, 02/06/2024",
+    "escalas-4": "Grupo de Louvor Adoração",
+    "escalas-5": "Domingo, 09/06/2024",
+    "escalas-6": "Grupo de Louvor Shalom",
+    "escalas-7": "Domingo, 16/06/2024",
+    "escalas-8": "Grupo de Louvor Adoração",
+    "escalas-9": "Domingo, 23/06/2024",
+    "escalas-10": "Grupo de Louvor Shalom",
+    "escalas-11": "Escala de Recepção",
+    "escalas-12": "Domingo, 02/06/2024",
+    "escalas-13": "Carlos e Maria",
+    "escalas-14": "Domingo, 09/06/2024",
+    "escalas-15": "Ricardo e Ana",
+    "escalas-16": "Domingo, 16/06/2024",
+    "escalas-17": "Pedro e Débora",
+    "escalas-18": "Domingo, 23/06/2024",
+    "escalas-19": "João e Raquel",
+    "escalas-20": "Escala de Leitura Bíblica",
+    "escalas-21": "Domingo, 02/06/2024",
+    "escalas-22": "Presb. Wilson",
+    "escalas-23": "Domingo, 09/06/2024",
+    "escalas-24": "Diác. Roberto",
+    "escalas-25": "Domingo, 16/06/2024",
+    "escalas-26": "Presb. Eduardo",
+    "escalas-27": "Domingo, 23/06/2024",
+    "escalas-28": "Diác. Marcos",
+    "escalas-29": "Escala de Som",
+    "escalas-30": "Domingo, 02/06/2024",
+    "escalas-31": "Felipe",
+    "escalas-32": "Domingo, 09/06/2024",
+    "escalas-33": "Gabriel",
+    "escalas-34": "Domingo, 16/06/2024",
+    "escalas-35": "Lucas",
+    "escalas-36": "Domingo, 23/06/2024",
+    "escalas-37": "Felipe",
+    "escalas-38": "Escala de Liturgia",
+    "escalas-39": "Domingo, 02/06/2024",
+    "escalas-40": "Presb. Antônio",
+    "escalas-41": "Domingo, 09/06/2024",
+    "escalas-42": "Presb. José",
+    "escalas-43": "Domingo, 16/06/2024",
+    "escalas-44": "Presb. Paulo",
+    "escalas-45": "Domingo, 23/06/2024",
+    "escalas-46": "Presb. Antônio",
+    "escalas-47": "Escala Infantil",
+    "escalas-48": "Domingo, 02/06/2024",
+    "escalas-49": "Juliana e Beatriz",
+    "escalas-50": "Domingo, 09/06/2024",
+    "escalas-51": "Fernanda e Luiza",
+    "escalas-52": "Domingo, 16/06/2024",
+    "escalas-53": "Amanda e Carolina",
+    "escalas-54": "Domingo, 23/06/2024",
+    "escalas-55": "Juliana e Beatriz",
+  };
+
+  // Dados das escalas podem ser preenchidos dinamicamente
+  // através de um serviço no futuro
+}

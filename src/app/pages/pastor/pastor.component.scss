@@ -1,0 +1,489 @@
+@use "../../../styles/variables" as *;
+
+.pastor-page {
+  position: relative;
+}
+
+// Banner da página
+.sobre-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/imagens/Pastor.webp");
+  background-size: cover;
+  background-position: center;
+  color: var(--light-text);
+  padding: var(--space-xxl) 0;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      var(--primary-dark) 0%,
+      var(--secondary-dark) 100%
+    );
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @include md {
+      font-size: 2.5rem;
+    }
+
+    @include sm {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    opacity: 0.9;
+    line-height: 1.5;
+
+    @include sm {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Seção História do Pastor
+.sobre-historia {
+  padding: var(--space-xl) 0;
+  background-color: var(--white);
+}
+
+.sobre-content {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+
+  @include md {
+    flex-direction: column;
+  }
+}
+
+.sobre-image {
+  flex: 1;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+}
+
+.sobre-text {
+  flex: 1.5;
+
+  h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-md);
+    font-size: 1.8rem;
+  }
+
+  p {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+}
+
+// Galeria de Fotos
+.galeria-fotos {
+  padding: var(--space-xl) 0;
+  background-color: var(--light-bg);
+}
+
+.galeria-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.galeria-item {
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+
+    .galeria-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.galeria-imagem {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.galeria-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: var(--space-sm);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galeria-titulo {
+  text-align: center;
+  font-weight: bold;
+}
+
+.galeria-texto {
+  margin-top: var(--space-lg);
+
+  p {
+    max-width: 800px;
+    margin: 0 auto var(--space-md);
+    line-height: 1.7;
+  }
+
+  .galeria-verso {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+  }
+}
+
+// Lightbox
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-lg);
+
+  &.active {
+    display: flex;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  margin: auto;
+
+  img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.fechar-lightbox {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--primary-light);
+  }
+}
+
+.lightbox-legenda {
+  color: white;
+  text-align: center;
+  padding: var(--space-sm) 0;
+  font-size: 1.1rem;
+}
+
+// Seção Timeline/Ministério
+.sobre-formacao {
+  background-color: var(--white);
+  padding: var(--space-xl) 0;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: var(--space-lg) auto 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-light);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+
+    @include md {
+      left: 30px;
+    }
+  }
+}
+
+.timeline-item {
+  padding: var(--space-md) 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @include md {
+    justify-content: flex-start;
+    padding-left: 60px;
+  }
+}
+
+.timeline-marker {
+  background-color: var(--primary-color);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: var(--shadow);
+  z-index: 1;
+  color: white;
+  font-size: 1.5rem;
+
+  @include md {
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+.timeline-content {
+  background-color: var(--light-bg);
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: 45%;
+  width: 45%;
+  position: relative;
+  margin-left: 50px;
+
+  @include md {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-xs);
+    font-size: 1.3rem;
+  }
+
+  .timeline-date {
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+.timeline-item:nth-child(even) {
+  justify-content: flex-start;
+
+  @include md {
+    justify-content: flex-start;
+  }
+
+  .timeline-content {
+    margin-left: 50px;
+    margin-right: 0;
+
+    @include md {
+      margin-left: 0;
+    }
+  }
+}
+
+.timeline-item:nth-child(odd) {
+  justify-content: flex-end;
+
+  @include md {
+    justify-content: flex-start;
+  }
+
+  .timeline-content {
+    margin-left: 0;
+    margin-right: 50px;
+
+    @include md {
+      margin-right: 0;
+    }
+  }
+}
+
+// Seção Especialidades / Carreira e Atuação
+.especialidades {
+  padding: var(--space-xl) 0;
+  background-color: var(--light-bg);
+}
+
+.especialidades-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.coluna-especialidade {
+  background-color: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+
+  h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-md);
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  ul {
+    list-style-position: inside;
+    padding-left: var(--space-sm);
+
+    li {
+      margin-bottom: var(--space-sm);
+      line-height: 1.6;
+    }
+  }
+}
+
+// Seção Diferenciais / Publicações
+.diferenciais {
+  padding: var(--space-xl) 0;
+  background-color: var(--white);
+}
+
+.container-diferenciais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.coluna-diferencial {
+  padding: var(--space-lg);
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-md);
+    font-size: 1.4rem;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+// Citação final
+.citacao-final {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin-top: 2rem !important;
+  color: var(--primary-color);
+}
+
+// Utilitários
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+  margin-bottom: var(--space-xs);
+
+  @include sm {
+    font-size: 1.8rem;
+  }
+}
+
+.section-description {
+  max-width: 700px;
+  margin: 0 auto var(--space-lg);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.8;
+
+  @include sm {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,406 @@
+<div class="home-page">
+  <!-- Seção Hero -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1>{{ cms["titulo"] }}</h1>
+        <p>
+          {{ cms["descricao"] }}
+        </p>
+        <a routerLink="/agenda" class="btn-primary">Nossos Cultos e Eventos</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="assets/imagens/capa igreja.jpg"
+          alt="Interior da Igreja Presbiteriana de Macaé"
+          width="600"
+          height="400"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção do Pastor -->
+  <section class="pastor-section" id="pastor">
+    <div class="container">
+      <div class="pastor-container">
+        <div class="pastor-imagem">
+          <div class="pastor-foto-oval">
+            <img
+              class="pastor-foto-oval"
+              src="assets/imagens/Pastor Marcelo.png"
+              alt="Rev. Marcelo Carnaval"
+            />
+          </div>
+        </div>
+
+        <div class="pastor-conteudo">
+          <div class="pastor-info">
+            <h3>{{ cms["pastor_nome"] || "Rev. Marcelo Carnaval Morett" }}</h3>
+            <p class="pastor-cargo">
+              {{ cms["pastor_cargo"] || "Pastor Titular" }}
+            </p>
+            <p>
+              {{
+                cms["pastor_bio_curta"] ||
+                  "Nascido em 1962, é mineiro, criado no Rio de Janeiro e mora em Macaé desde 1996. É casado com Martha Morett, que é médica psiquiatra infantil. Eles têm quatro filhos: Ana Clara, Ana Luíza, Ana Alícia e Davi."
+              }}
+            </p>
+            <p>
+              {{
+                cms["pastor_formacao_curta"] ||
+                  "O pastor Marcelo é Bacharel em teologia pelo Seminário Teológico Betel, no Rio de Janeiro. Pastoreou a Segunda Igreja Presbiteriana de Macaé por onze anos, antes de plantar a Quarta IPM, há 14 anos."
+              }}
+            </p>
+            <div class="pastor-acoes">
+              <a routerLink="/pastor" class="btn-primary">
+                <i class="fas fa-book-reader"></i>
+                Conheça Minha Trajetória
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Reformadores -->
+  <section class="reforma-section" id="reforma">
+    <div class="container">
+      <h2 class="section-title">
+        {{ cms["reformadores_titulo"] || "Figuras Históricas" }}
+      </h2>
+      <p class="section-description">
+        {{
+          cms["reformadores_descricao"] ||
+            "Conheça algumas das figuras históricas mais importantes para a teologia reformada e a Igreja Presbiteriana."
+        }}
+      </p>
+
+      <div class="card-grid">
+        <!-- Card do Martinho Lutero -->
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="assets/imagens/martinho lutero.svg"
+              alt="Martinho Lutero"
+            />
+          </div>
+          <div class="card-content">
+            <h3>{{ cms["lutero_nome"] || "Martinho Lutero" }}</h3>
+            <p>
+              {{
+                cms["lutero_descricao"] ||
+                  "Monge alemão e professor de teologia que iniciou a Reforma Protestante no século XVI, quando publicou suas 95 teses contra as indulgências."
+              }}
+            </p>
+            <a routerLink="/lutero" class="btn-primary">Saiba mais</a>
+          </div>
+        </div>
+
+        <!-- Card do João Calvino -->
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/imagens/João Calvino.svg" alt="João Calvino" />
+          </div>
+          <div class="card-content">
+            <h3>{{ cms["calvino_nome"] || "João Calvino" }}</h3>
+            <p>
+              {{
+                cms["calvino_descricao"] ||
+                  "Teólogo francês cuja interpretação sistemática das doutrinas bíblicas formou a base teológica do presbiterianismo e outras denominações reformadas."
+              }}
+            </p>
+            <a routerLink="/calvino" class="btn-primary">Saiba mais</a>
+          </div>
+        </div>
+
+        <!-- Card do Ashbel Green Simonton -->
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="assets/imagens/Ashbel Green Simonton.svg"
+              alt="Ashbel Green Simonton"
+            />
+          </div>
+          <div class="card-content">
+            <h3>{{ cms["ashbel_nome"] || "Ashbel Green Simonton" }}</h3>
+            <p>
+              {{
+                cms["ashbel_descricao"] ||
+                  "Missionário norte-americano que fundou a Igreja Presbiteriana no Brasil em 1859, iniciando o trabalho presbiteriano em nosso país."
+              }}
+            </p>
+            <a routerLink="/ashbel" class="btn-primary">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Agenda -->
+  <section class="agenda-section" id="agenda">
+    <div class="container agenda-container">
+      <h2 class="section-title">
+        {{ cms["agenda_titulo"] || "Nossa Agenda" }}
+      </h2>
+      <p class="section-description">
+        {{
+          cms["agenda_descricao"] ||
+            "Confira nossos próximos eventos e participe conosco destes momentos especiais de comunhão, adoração e aprendizado."
+        }}
+      </p>
+
+      <div class="eventos-lista">
+        <!-- Usando ngFor para iterar sobre a lista de eventos -->
+        <div class="evento-card" *ngFor="let evento of eventos">
+          <div class="evento-data">
+            <div class="evento-dia">{{ evento.dia }}</div>
+            <div class="evento-mes">{{ evento.mes }}</div>
+          </div>
+          <div class="evento-info">
+            <h3>{{ evento.titulo }}</h3>
+            <p *ngIf="evento.descricao">{{ evento.descricao }}</p>
+            <div class="evento-meta">
+              <span>
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12 2 C6.5 2 2 6.5 2 12 C2 17.5 6.5 22 12 22 C17.5 22 22 17.5 22 12 C22 6.5 17.5 2 12 2ZM12 20 C7.59 20 4 16.41 4 12 C4 7.59 7.59 4 12 4 C16.41 4 20 7.59 20 12 C20 16.41 16.41 20 12 20ZM12.5 7H11V13L16.2 16.2L17 14.9L12.5 12.2V7Z"
+                  />
+                </svg>
+                {{ evento.horario }}
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12 2 C8.13 2 5 5.13 5 9 C5 14.25 12 22 12 22 C12 22 19 14.25 19 9 C19 5.13 15.87 2 12 2ZM12 11.5 C10.62 11.5 9.5 10.38 9.5 9 C9.5 7.62 10.62 6.5 C13.38 6.5 14.5 7.62 14.5 9 C14.5 10.38 13.38 11.5 12 11.5Z"
+                  />
+                </svg>
+                {{ evento.local }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Ministério -->
+  <section class="ministerio-section" id="ministerio">
+    <div class="container">
+      <h2 class="section-title">
+        {{ cms["ministerio_titulo"] || "Ministério" }}
+      </h2>
+      <p class="section-description">
+        {{
+          cms["ministerio_descricao"] ||
+            "Conheça o chamado e a visão ministerial que orienta meu trabalho e serviço à comunidade de fé."
+        }}
+      </p>
+
+      <div class="ministerio-container">
+        <!-- Visão e Missão -->
+        <div class="ministerio-visao">
+          <div class="ministerio-header">
+            <div class="ministerio-icon">
+              <i class="fas fa-church" aria-hidden="true"></i>
+            </div>
+            <h3>{{ cms["ministerio_visao_titulo"] || "Visão e Missão" }}</h3>
+          </div>
+          <p>
+            {{
+              cms["ministerio_visao_p1"] ||
+                "Descrição da visão ministerial e propósito do trabalho, abordando os valores espirituais que norteiam a atuação e o impacto desejado na comunidade. Esta área permite compartilhar a essência do chamado que inspira seu ministério."
+            }}
+          </p>
+          <p>
+            {{
+              cms["ministerio_visao_p2"] ||
+                "Detalhamento sobre como essa visão se materializa na prática, por meio de projetos e iniciativas concretas que buscam transformar vidas e fortalecer a fé das pessoas."
+            }}
+          </p>
+          <div class="ministerio-callout">
+            <i class="fas fa-quote-left" aria-hidden="true"></i>
+            <blockquote>
+              {{
+                cms["ministerio_citacao"] ||
+                  "Sejamos uma comunidade viva, que reflete o amor de Cristo e transforma a sociedade ao seu redor."
+              }}
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- Áreas de Atuação -->
+        <div class="ministerio-atuacao">
+          <div class="ministerio-header-main">
+            <div class="ministerio-icon-main">
+              <i class="fas fa-hands-helping" aria-hidden="true"></i>
+            </div>
+            <h3>{{ cms["ministerio_areas_titulo"] || "Áreas de Atuação" }}</h3>
+          </div>
+          <div class="ministerio-areas">
+            <article class="area-item">
+              <div class="area-icon">
+                <i class="fas fa-pray" aria-hidden="true"></i>
+              </div>
+              <h4>{{ cms["ministerio_area1_titulo"] || "Aconselhamento" }}</h4>
+              <p>
+                {{
+                  cms["ministerio_area1_descricao"] ||
+                    "Acompanhamento pastoral para momentos de crise, decisões importantes e crescimento espiritual, oferecendo suporte baseado em princípios bíblicos e sabedoria prática."
+                }}
+              </p>
+              <a href="#" class="area-link"
+                >{{ cms["ministerio_saiba_mais"] || "Saiba mais" }}
+                <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+
+            <article class="area-item">
+              <div class="area-icon">
+                <i class="fas fa-book-open" aria-hidden="true"></i>
+              </div>
+              <h4>{{ cms["ministerio_area2_titulo"] || "Ensino Bíblico" }}</h4>
+              <p>
+                {{
+                  cms["ministerio_area2_descricao"] ||
+                    "Estudos bíblicos aprofundados e contextualização das escrituras para aplicação na vida contemporânea, facilitando a compreensão e vivência da fé."
+                }}
+              </p>
+              <a href="#" class="area-link"
+                >{{ cms["ministerio_saiba_mais"] || "Saiba mais" }}
+                <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+
+            <article class="area-item">
+              <div class="area-icon">
+                <i class="fas fa-hands-helping" aria-hidden="true"></i>
+              </div>
+              <h4>{{ cms["ministerio_area3_titulo"] || "Ação Social" }}</h4>
+              <p>
+                {{
+                  cms["ministerio_area3_descricao"] ||
+                    "Projetos e iniciativas voltadas ao serviço comunitário e apoio aos mais vulneráveis, colocando em prática os valores de amor e solidariedade cristã."
+                }}
+              </p>
+              <a href="#" class="area-link"
+                >{{ cms["ministerio_saiba_mais"] || "Saiba mais" }}
+                <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+
+            <article class="area-item">
+              <div class="area-icon">
+                <i class="fas fa-users" aria-hidden="true"></i>
+              </div>
+              <h4>
+                {{ cms["ministerio_area4_titulo"] || "Formação de Líderes" }}
+              </h4>
+              <p>
+                {{
+                  cms["ministerio_area4_descricao"] ||
+                    "Mentoria e capacitação para o desenvolvimento de novos líderes, preparando-os para multiplicar o impacto positivo na comunidade de fé e na sociedade."
+                }}
+              </p>
+              <a href="#" class="area-link"
+                >{{ cms["ministerio_saiba_mais"] || "Saiba mais" }}
+                <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Localização/Mapa -->
+  <section class="map-section" id="localizacao">
+    <div class="container">
+      <h2 class="section-title">
+        {{ cms["localizacao_titulo"] || "Como Chegar" }}
+      </h2>
+      <p class="section-description">
+        {{
+          cms["localizacao_descricao"] ||
+            "Veja nossa localização no mapa e venha nos visitar!"
+        }}
+      </p>
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29512.811944825942!2d-41.773374!3d-22.387531!3m2!1i1024!2i768!4f0.3!3m3!1m2!1s0x9631c0373e172d%3A0xe6fe495776898699!2sQuarta%20Igreja%20Presbiteriana%20de%20Maca%C3%A9!5e0!3m2!1spt-BR!2sbr!4v1725386128145!5m2!1spt-BR!2sbr"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Dízimos e Ofertas -->
+  <section class="dizimos-ofertas" id="dizimos-ofertas">
+    <div class="container">
+      <h2 class="section-title">
+        {{ cms["dizimos_titulo"] || "Dízimos e Ofertas" }}
+      </h2>
+      <p class="section-description">
+        {{
+          cms["dizimos_descricao"] ||
+            "Contribua para nossa obra através dos canais abaixo"
+        }}
+      </p>
+
+      <div class="dizimos-container">
+        <div class="dizimo-metodo">
+          <h3>{{ cms["banco_titulo"] || "Transferência Bancária" }}</h3>
+          <div class="dados-bancarios">
+            <p>
+              <strong>{{ cms["banco_label"] || "Banco:" }}</strong>
+              <span>{{ dadosBancarios.banco }}</span>
+            </p>
+            <p>
+              <strong>{{ cms["conta_label"] || "Conta:" }}</strong>
+              <span>{{ dadosBancarios.conta }}</span>
+            </p>
+            <p>
+              <strong>{{ cms["titular_label"] || "Titular:" }}</strong>
+              <span>{{ dadosBancarios.titular }}</span>
+            </p>
+            <p>
+              <strong>{{ cms["cnpj_label"] || "CNPJ:" }}</strong>
+              <span>{{ dadosBancarios.cnpj }}</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="dizimo-metodo pix-container">
+          <h3>{{ cms["pix_titulo"] || "PIX" }}</h3>
+          <div class="qrcode-container">
+            <div class="qrcode">
+              <img
+                src="assets/imagens/qr-code-svgrepo-com.svg"
+                alt="QR Code para PIX"
+              />
+            </div>
+          </div>
+          <div class="pix-info">
+            <p>
+              <strong>{{ cms["chave_pix_label"] || "Chave PIX:" }}</strong>
+              <span>{{ dadosPixId.chave }}</span>
+            </p>
+            <p>
+              <strong>{{ cms["tipo_pix_label"] || "Tipo:" }}</strong>
+              <span>{{ dadosPixId.tipo }}</span>
+            </p>
+            <button class="btn-primary" (click)="copiarChavePix()">
+              {{ cms["botao_pix"] || "Copiar Chave PIX" }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

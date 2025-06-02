@@ -1,0 +1,110 @@
+<footer>
+  <div class="container footer-container" id="contato">
+    {{ cms["footer-0"] }}
+    <div class="footer-section">
+      <div class="footer-logo">
+        <h3>
+          {{ cms["footer-1"] }}
+          <br />
+          {{ cms["footer-2"] }}
+        </h3>
+      </div>
+      <p>
+        {{ cms["footer-3"] }}
+      </p>
+      <p>
+        <em>{{ cms["footer-4"] }}</em>
+      </p>
+    </div>
+    {{ cms["footer-5"] }}
+    <div class="footer-section">
+      <h4>{{ cms["footer-6"] }}</h4>
+      <div class="footer-horarios">
+        <p>
+          <strong>{{ cms["footer-7"] }}</strong>
+          {{ cms["footer-8"] }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-9"] }}</strong>
+          {{ cms["footer-10"] }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-11"] }}</strong>
+          {{ cms["footer-12"] }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-13"] }}</strong>
+          {{ cms["footer-14"] }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-15"] }}</strong>
+          {{ cms["footer-16"] }}
+        </p>
+      </div>
+    </div>
+    {{ cms["footer-17"] }}
+    <div class="footer-section">
+      <div class="footer-contact">
+        <h4>{{ cms["footer-18"] }}</h4>
+        <p>
+          <strong>{{ cms["footer-19"] }}</strong>
+          {{ contato.endereco }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-20"] }}</strong>
+          {{ contato.telefone }}
+        </p>
+        <p>
+          <strong>{{ cms["footer-21"] }}</strong>
+          {{ contato.email }}
+        </p>
+      </div>
+      <div class="footer-social">
+        <h4>{{ cms["footer-22"] }}</h4>
+        <div class="social-icons">
+          <a
+            [href]="redesSociais.facebook"
+            aria-label="Facebook"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            [href]="redesSociais.instagram"
+            aria-label="Instagram"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            [href]="redesSociais.youtube"
+            aria-label="YouTube"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a
+            [href]="redesSociais.whatsapp"
+            aria-label="WhatsApp"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ cms["footer-23"] }}
+  <div class="copyright">
+    <div class="container">
+      <p>
+        © {{ currentYear }} Quarta Igreja Presbiteriana de Macaé. Todos os
+        direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

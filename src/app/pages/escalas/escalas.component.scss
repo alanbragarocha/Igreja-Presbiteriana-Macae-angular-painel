@@ -1,0 +1,103 @@
+@use "../../../styles/variables" as *;
+
+.escalas-page {
+  padding: var(--space-lg) 0;
+}
+
+.page-header {
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.page-header h1 {
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
+}
+
+.page-description {
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.escalas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.escala-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.escala-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.escala-header {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.escala-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.escala-icon {
+  margin-right: var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-round);
+}
+
+.escala-content {
+  padding: var(--space-md);
+}
+
+.escala-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.escala-item {
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--gray-bg);
+}
+
+.escala-item:last-child {
+  border-bottom: none;
+}
+
+.escala-data {
+  font-weight: bold;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.escala-pessoa {
+  color: var(--text-color);
+  display: block;
+}
+
+/* Estilos responsivos */
+@include md {
+  .escalas-grid {
+    grid-template-columns: 1fr;
+  }
+}

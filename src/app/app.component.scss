@@ -1,0 +1,95 @@
+/* ============================================
+   APP.COMPONENT.SCSS - SISTEMA DE ESTILO SUSTENTÁVEL
+   Quarta Igreja Presbiteriana de Macaé
+   ============================================ */
+@use "../styles/variables" as *;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+
+  .main-content {
+    flex: 1 0 auto;
+    padding: 0;
+    min-height: calc(100vh - 70px - 350px);
+    margin-top: 0;
+    transition: padding 0.3s ease;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+
+    @include md {
+      padding: 0;
+    }
+
+    @include xs {
+      min-height: calc(100vh - 60px - 300px);
+    }
+  }
+}
+
+/* Utilitários de espaçamento baseados nas variáveis globais */
+.section {
+  padding: var(--space-lg) 0;
+
+  &.section-lg {
+    padding: var(--space-xl) 0;
+  }
+
+  &.section-sm {
+    padding: var(--space-md) 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* Responsividade */
+@include md {
+  .section {
+    padding: var(--space-md) 0;
+
+    &.section-lg {
+      padding: var(--space-lg) 0;
+    }
+
+    &.section-sm {
+      padding: var(--space-sm) 0;
+    }
+  }
+}
+
+@include sm {
+  .container {
+    padding: 0 var(--space-xs);
+  }
+}
+
+/* Responsividade para dispositivos muito pequenos */
+@include xs {
+  .container {
+    padding: 0 var(--space-xs);
+  }
+
+  .section {
+    padding: var(--space-sm) 0;
+  }
+}
+
+/* Dispositivos extremamente pequenos */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 8px;
+  }
+}

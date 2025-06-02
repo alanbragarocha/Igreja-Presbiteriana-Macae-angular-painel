@@ -1,0 +1,138 @@
+<div class="figura-page">
+  {{ cms["ashbel-0"] }}
+  <section class="figura-banner">
+    <div class="container">
+      <h1>{{ cms["ashbel-1"] }}</h1>
+      <p class="subtitle">{{ cms["ashbel-2"] }}</p>
+    </div>
+  </section>
+  {{ cms["ashbel-3"] }}
+  <section class="figura-principal">
+    <div class="container">
+      <div class="figura-content">
+        <div class="figura-image">
+          <img
+            alt="Ashbel Green Simonton"
+            loading="lazy"
+            src="assets/imagens/Ashbel Green Simonton.svg"
+          />
+        </div>
+        <div class="figura-text">
+          <h2>{{ cms["ashbel-4"] }}</h2>
+          <p>
+            {{ cms["ashbel-5"] }}
+          </p>
+          <p>
+            {{ cms["ashbel-6"] }}
+          </p>
+          <p>
+            {{ cms["ashbel-7"] }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["ashbel-8"] }}
+  <section class="timeline-section">
+    <div class="container">
+      <h2 class="section-title">{{ cms["ashbel-9"] }}</h2>
+      <p class="section-description">{{ cms["ashbel-10"] }}</p>
+      <div class="timeline">
+        <div *ngFor="let event of timelineEvents" class="timeline-item">
+          <div class="timeline-marker">{{ event.year }}</div>
+          <div class="timeline-content">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["ashbel-11"] }}
+  <section class="quote-section">
+    <div class="container">
+      <blockquote>
+        {{ cms["ashbel-12"] }}
+        <cite>{{ cms["ashbel-13"] }}</cite>
+      </blockquote>
+    </div>
+  </section>
+  {{ cms["ashbel-14"] }}
+  <section class="legado-section">
+    <div class="container">
+      <h2 class="section-title">{{ cms["ashbel-15"] }}</h2>
+      <p class="section-description">{{ cms["ashbel-16"] }}</p>
+      <div class="legado-grid">
+        <div *ngFor="let item of legados" class="legado-item">
+          <div class="legado-icon">
+            <i [class]="item.icon"></i>
+          </div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["ashbel-17"] }}
+  <section class="denominacoes-section">
+    <div class="container">
+      <h2 class="section-title">{{ cms["ashbel-18"] }}</h2>
+      <p class="section-description">
+        {{ cms["ashbel-19"] }}
+      </p>
+      <div class="denominacoes-grid">
+        <div class="denominacao-item">
+          <h3>{{ cms["ashbel-20"] }}</h3>
+          <p>
+            {{ cms["ashbel-21"] }}
+          </p>
+        </div>
+        <div class="denominacao-item">
+          <h3>{{ cms["ashbel-22"] }}</h3>
+          <p>
+            {{ cms["ashbel-23"] }}
+          </p>
+        </div>
+        <div class="denominacao-item">
+          <h3>{{ cms["ashbel-24"] }}</h3>
+          <p>
+            {{ cms["ashbel-25"] }}
+          </p>
+        </div>
+        <div class="denominacao-item">
+          <h3>{{ cms["ashbel-26"] }}</h3>
+          <p>
+            {{ cms["ashbel-27"] }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["ashbel-28"] }}
+  <section class="curiosidades-section">
+    <div class="container">
+      <h2 class="section-title">{{ cms["ashbel-29"] }}</h2>
+      <p class="section-description">{{ cms["ashbel-30"] }}</p>
+      <div class="curiosidades-lista">
+        <div
+          *ngfor="let curiosidade of curiosidades; let i = index"
+          class="curiosidade-item"
+        >
+          <div class="numero">{{ i + 1 }}</div>
+          <div class="curiosidade-content">
+            <p>{{ curiosidade }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["ashbel-31"] }}
+  <section class="soli-section">
+    <div class="container">
+      <h2 class="section-title">{{ cms["ashbel-32"] }}</h2>
+      <p class="section-description">
+        {{ cms["ashbel-33"] }}
+      </p>
+    </div>
+  </section>
+</div>

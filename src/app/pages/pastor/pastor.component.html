@@ -1,0 +1,224 @@
+<div class="pastor-page">
+  {{ cms["pastor-0"] }}
+  <section class="sobre-banner">
+    <div class="container">
+      <h1>{{ cms["pastor-1"] }}</h1>
+      <p class="subtitle">{{ cms["pastor-2"] }}</p>
+    </div>
+  </section>
+  {{ cms["pastor-3"] }}
+  <section class="sobre-historia" id="trajetoria">
+    <div class="container">
+      <div class="sobre-content">
+        <div class="sobre-image">
+          <img
+            alt="Rev. Marcelo Carnaval"
+            loading="lazy"
+            src="assets/imagens/Pastor Marcelo.png"
+          />
+        </div>
+        <div class="sobre-text">
+          <h2 class="text-center">{{ cms["pastor-4"] }}</h2>
+          <p>
+            {{ cms["pastor-5"] }}
+          </p>
+          <h2 class="text-center">{{ cms["pastor-6"] }}</h2>
+          <p>
+            {{ cms["pastor-7"] }}
+          </p>
+          <h2 class="text-center">{{ cms["pastor-8"] }}</h2>
+          <p>
+            {{ cms["pastor-9"] }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-10"] }}
+  <section class="galeria-fotos" id="minha-familia">
+    <div class="container">
+      <h2 class="section-title text-center">{{ cms["pastor-11"] }}</h2>
+      <p class="section-description text-center">
+        {{ cms["pastor-12"] }}
+      </p>
+      <div class="galeria-container">
+        <div *ngFor="let foto of fotos" class="galeria-item">
+          <div class="galeria-imagem">
+            <img
+              (click)="abrirLightbox(foto)"
+              [alt]="foto.alt"
+              [src]="foto.src"
+              class="imagem-clicavel"
+              loading="lazy"
+            />
+            <div class="galeria-overlay">
+              <div class="galeria-titulo">{{ foto.titulo }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="galeria-texto text-center">
+        <p>
+          {{ cms["pastor-13"] }}
+        </p>
+        <p class="galeria-verso">{{ cms["pastor-14"] }}</p>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-15"] }}
+  <div [class.active]="lightboxAtivo" class="lightbox">
+    <div class="lightbox-content">
+      <span (click)="fecharLightbox()" class="fechar-lightbox">{{
+        cms["pastor-16"]
+      }}</span>
+      <img [src]="fotoSelecionada?.src" alt="Imagem ampliada" />
+      <div class="lightbox-legenda">{{ fotoSelecionada?.titulo }}</div>
+    </div>
+  </div>
+  {{ cms["pastor-17"] }}
+  <section class="sobre-formacao" id="ministerio">
+    <div class="container">
+      <h2 class="section-title text-center">{{ cms["pastor-18"] }}</h2>
+      <p class="section-description text-center">
+        {{ cms["pastor-19"] }}
+      </p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fas fa-church"></i>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ cms["pastor-20"] }}</h3>
+            <p class="timeline-date">{{ cms["pastor-21"] }}</p>
+            <p>
+              {{ cms["pastor-22"] }}
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ cms["pastor-23"] }}</h3>
+            <p class="timeline-date">{{ cms["pastor-24"] }}</p>
+            <p>
+              {{ cms["pastor-25"] }}
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ cms["pastor-26"] }}</h3>
+            <p class="timeline-date">{{ cms["pastor-27"] }}</p>
+            <p>
+              {{ cms["pastor-28"] }}
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fas fa-hotel"></i>
+          </div>
+          <div class="timeline-content">
+            <h3>{{ cms["pastor-29"] }}</h3>
+            <p class="timeline-date">{{ cms["pastor-30"] }}</p>
+            <p>
+              {{ cms["pastor-31"] }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-32"] }}
+  <section class="especialidades" id="carreira">
+    <div class="container">
+      <h2 class="section-title text-center">{{ cms["pastor-33"] }}</h2>
+      <p class="section-description text-center">
+        {{ cms["pastor-34"] }}
+      </p>
+      <div class="especialidades-container">
+        <div class="coluna-especialidade">
+          <h3>{{ cms["pastor-35"] }}</h3>
+          <ul>
+            <li>{{ cms["pastor-36"] }}</li>
+            <li>{{ cms["pastor-37"] }}</li>
+            <li>{{ cms["pastor-38"] }}</li>
+            <li>
+              {{ cms["pastor-39"] }}
+            </li>
+            <li>{{ cms["pastor-40"] }}</li>
+          </ul>
+        </div>
+        <div class="coluna-especialidade">
+          <h3>{{ cms["pastor-41"] }}</h3>
+          <ul>
+            <li>{{ cms["pastor-42"] }}</li>
+            <li>{{ cms["pastor-43"] }}</li>
+            <li>{{ cms["pastor-44"] }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-45"] }}
+  <section class="diferenciais" id="publicacoes">
+    <div class="container">
+      <h2 class="section-title text-center">{{ cms["pastor-46"] }}</h2>
+      <p class="section-description text-center">
+        {{ cms["pastor-47"] }}
+      </p>
+      <div class="container-diferenciais">
+        <article class="coluna-diferencial">
+          <h3>{{ cms["pastor-48"] }}</h3>
+          <p>
+            {{ cms["pastor-49"] }}
+          </p>
+        </article>
+        <article class="coluna-diferencial">
+          <h3>{{ cms["pastor-50"] }}</h3>
+          <p>
+            {{ cms["pastor-51"] }}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-52"] }}
+  <section class="especialidades" id="atuacao-presbiterial">
+    <div class="container">
+      <h2 class="section-title text-center">{{ cms["pastor-53"] }}</h2>
+      <p class="section-description text-center">
+        {{ cms["pastor-54"] }}
+      </p>
+      <div class="especialidades-container">
+        <div class="coluna-especialidade">
+          <h3>{{ cms["pastor-55"] }}</h3>
+          <ul>
+            <li>{{ cms["pastor-56"] }}</li>
+            <li>{{ cms["pastor-57"] }}</li>
+            <li>{{ cms["pastor-58"] }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ cms["pastor-59"] }}
+  <section class="sobre-historia" id="gratidao">
+    <div class="container">
+      <div class="sobre-content">
+        <div class="sobre-text" style="flex: 1 1 100%; text-align: center">
+          <h2 class="text-center">{{ cms["pastor-60"] }}</h2>
+          <p>
+            {{ cms["pastor-61"] }}
+          </p>
+          <p class="citacao-final">{{ cms["pastor-62"] }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

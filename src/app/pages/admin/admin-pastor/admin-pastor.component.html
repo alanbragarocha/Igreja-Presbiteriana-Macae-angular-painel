@@ -1,0 +1,321 @@
+<div class="admin-pastor-container">
+  <div class="admin-header">
+    <h2>Editar Página do Pastor</h2>
+    <a routerLink="/admin" class="btn-voltar">
+      <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
+    </a>
+  </div>
+  <p>Configure as informações e seções da página do pastor.</p>
+
+  <div class="card">
+    <form [formGroup]="pastorForm" (ngSubmit)="onSubmit()" class="form">
+      <!-- Seção Principal -->
+      <h3 class="section-header">1. Seção Principal</h3>
+      <div class="form-group">
+        <label for="pastor-1">Título Principal</label>
+        <input
+          type="text"
+          id="pastor-1"
+          formControlName="pastor-1"
+          class="form-control"
+          [class.is-invalid]="
+            pastorForm.get('pastor-1')?.invalid &&
+            pastorForm.get('pastor-1')?.touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            pastorForm.get('pastor-1')?.invalid &&
+            pastorForm.get('pastor-1')?.touched
+          "
+        >
+          O título é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-2">Subtítulo</label>
+        <textarea
+          id="pastor-2"
+          formControlName="pastor-2"
+          class="form-control"
+          rows="2"
+          [class.is-invalid]="
+            pastorForm.get('pastor-2')?.invalid &&
+            pastorForm.get('pastor-2')?.touched
+          "
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            pastorForm.get('pastor-2')?.invalid &&
+            pastorForm.get('pastor-2')?.touched
+          "
+        >
+          O subtítulo é obrigatório.
+        </div>
+      </div>
+
+      <!-- Seção Trajetória Pastoral -->
+      <h3 class="section-header">2. Seção Trajetória Pastoral</h3>
+      <div class="form-group">
+        <label for="pastor-4">Título da Seção</label>
+        <input
+          type="text"
+          id="pastor-4"
+          formControlName="pastor-4"
+          class="form-control"
+          [class.is-invalid]="
+            pastorForm.get('pastor-4')?.invalid &&
+            pastorForm.get('pastor-4')?.touched
+          "
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-5">Descrição</label>
+        <textarea
+          id="pastor-5"
+          formControlName="pastor-5"
+          class="form-control"
+          rows="4"
+          [class.is-invalid]="
+            pastorForm.get('pastor-5')?.invalid &&
+            pastorForm.get('pastor-5')?.touched
+          "
+        ></textarea>
+      </div>
+
+      <!-- Seção Família -->
+      <h3 class="section-header">3. Seção Família</h3>
+      <div class="form-group">
+        <label for="pastor-6">Título</label>
+        <input
+          type="text"
+          id="pastor-6"
+          formControlName="pastor-6"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-7">Descrição</label>
+        <textarea
+          id="pastor-7"
+          formControlName="pastor-7"
+          class="form-control"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- Seção Ministério em Macaé -->
+      <h3 class="section-header">4. Seção Ministério em Macaé</h3>
+      <div class="form-group">
+        <label for="pastor-8">Título</label>
+        <input
+          type="text"
+          id="pastor-8"
+          formControlName="pastor-8"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-9">Descrição</label>
+        <textarea
+          id="pastor-9"
+          formControlName="pastor-9"
+          class="form-control"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- Seção Minha Família -->
+      <h3 class="section-header">5. Seção Minha Família</h3>
+      <div class="form-group">
+        <label for="pastor-11">Título</label>
+        <input
+          type="text"
+          id="pastor-11"
+          formControlName="pastor-11"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-12">Subtítulo</label>
+        <input
+          type="text"
+          id="pastor-12"
+          formControlName="pastor-12"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-13">Descrição</label>
+        <textarea
+          id="pastor-13"
+          formControlName="pastor-13"
+          class="form-control"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-14">Citação Bíblica</label>
+        <textarea
+          id="pastor-14"
+          formControlName="pastor-14"
+          class="form-control"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <!-- Seção Formação e Ministério -->
+      <h3 class="section-header">6. Seção Formação e Ministério</h3>
+      <div class="form-group">
+        <label for="pastor-18">Título</label>
+        <input
+          type="text"
+          id="pastor-18"
+          formControlName="pastor-18"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-19">Subtítulo</label>
+        <textarea
+          id="pastor-19"
+          formControlName="pastor-19"
+          class="form-control"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <!-- Seção Áreas de Atuação -->
+      <h3 class="section-header">7. Seção Áreas de Atuação</h3>
+      <div class="form-group">
+        <label for="pastor-33">Título</label>
+        <input
+          type="text"
+          id="pastor-33"
+          formControlName="pastor-33"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-34">Descrição</label>
+        <textarea
+          id="pastor-34"
+          formControlName="pastor-34"
+          class="form-control"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <!-- Seção Publicações e Estudos -->
+      <h3 class="section-header">8. Seção Publicações e Estudos</h3>
+      <div class="form-group">
+        <label for="pastor-46">Título</label>
+        <input
+          type="text"
+          id="pastor-46"
+          formControlName="pastor-46"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-47">Descrição</label>
+        <textarea
+          id="pastor-47"
+          formControlName="pastor-47"
+          class="form-control"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <!-- Seção Gratidão -->
+      <h3 class="section-header">9. Seção Gratidão</h3>
+      <div class="form-group">
+        <label for="pastor-60">Título</label>
+        <input
+          type="text"
+          id="pastor-60"
+          formControlName="pastor-60"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-61">Mensagem</label>
+        <textarea
+          id="pastor-61"
+          formControlName="pastor-61"
+          class="form-control"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pastor-62">Citação Bíblica</label>
+        <textarea
+          id="pastor-62"
+          formControlName="pastor-62"
+          class="form-control"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="pastorForm.invalid || isSaving"
+        >
+          <span *ngIf="!isSaving">Salvar Alterações</span>
+          <span *ngIf="isSaving">Salvando...</span>
+        </button>
+
+        <a
+          routerLink="/pastor"
+          target="_blank"
+          class="btn-secondary view-page-btn"
+        >
+          <i class="fa fa-eye"></i> Visualizar Página
+        </a>
+      </div>
+
+      <div class="alert alert-success" *ngIf="saveSuccess">
+        Alterações na página do pastor salvas com sucesso! As alterações já
+        foram aplicadas ao site.
+      </div>
+
+      <!-- Debug Info -->
+      <div class="debug-info alert alert-info" *ngIf="debugInfo">
+        <strong>Debug:</strong> {{ debugInfo }}
+      </div>
+    </form>
+  </div>
+
+  <div class="tips-card">
+    <h3>Dicas</h3>
+    <ul>
+      <li>
+        Para textos mais longos, você pode usar quebras de linha para melhor
+        formatação
+      </li>
+      <li>
+        As citações bíblicas devem estar entre aspas para melhor apresentação
+      </li>
+      <li>
+        Para editar outros detalhes da página do pastor, use o editor de páginas
+        completo
+      </li>
+    </ul>
+  </div>
+</div>

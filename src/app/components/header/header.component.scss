@@ -1,0 +1,658 @@
+@use "../../../styles/variables" as *;
+
+/* Barra de eventos no topo */
+.proximos-eventos {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.625rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: 100%;
+  overflow: hidden; /* Evita que o conteúdo saia da tela */
+  display: block; /* Garante que o elemento seja exibido */
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .eventos-slider {
+    display: flex;
+    gap: var(--space-lg);
+
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    @media (max-width: 482px) {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 0 5px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .evento-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (max-width: 482px) {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 3px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .evento-icone {
+    display: flex;
+    align-items: center;
+  }
+
+  .evento-item.pastor-button {
+    margin-left: auto;
+
+    @include sm {
+      margin-left: 0;
+      margin-top: 0.3rem;
+    }
+
+    .pastor-top-link {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--white);
+      font-weight: 600;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+/* Header principal */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: var(--space-sm) 0;
+  overflow-x: hidden;
+  max-width: 100vw; /* Garante que o header use a largura total da viewport */
+  min-height: 60px;
+  display: block; /* Garante que o header sempre seja exibido */
+
+  @media (max-width: 480px) {
+    padding: var(--space-xs) 0;
+    min-height: 50px;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    height: 100%;
+    position: relative;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--space-sm);
+
+    @include sm {
+      padding: 0 var(--space-xs);
+    }
+
+    @include xxs {
+      padding: 0 calc(var(--space-xs) / 2);
+    }
+  }
+
+  .logo {
+    flex: 0 0 auto;
+    margin-right: auto;
+    display: flex; /* Garante que o logo seja exibido */
+    align-items: center;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 4vw, 1.25rem);
+      color: var(--text-color);
+      white-space: nowrap;
+      transition: var(--transition);
+      max-width: 100%; /* Garante que o link não ultrapasse o contêiner */
+
+      &::before,
+      &::after {
+        display: none; /* Previne conteúdo pseudo-elemento duplicado */
+      }
+
+      .full-title {
+        display: inline-block;
+        max-width: clamp(100px, 50vw, 280px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all 0.3s ease;
+
+        @media (max-width: 480px) {
+          max-width: clamp(90px, 40vw, 180px);
+        }
+
+        @media (max-width: 360px) {
+          display: none;
+        }
+      }
+
+      .short-title {
+        display: none;
+        max-width: 100px;
+
+        @media (max-width: 360px) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+/* Botão do menu mobile */
+.menu-hamburger {
+  display: none;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: var(--space-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1002;
+  position: relative;
+
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    margin-left: var(--space-xs);
+    display: flex; /* Garante que o botão hamburger seja exibido em telas pequenas */
+  }
+
+  @include xxs {
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+  }
+
+  span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    span {
+      &:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+/* Menu de navegação */
+.main-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    @include lg {
+      display: none;
+    }
+
+    li {
+      position: relative;
+      white-space: nowrap;
+
+      a {
+        display: block;
+        color: var(--text-color);
+        font-weight: 500;
+        padding: 0.5rem 0.25rem;
+        transition: var(--transition);
+        font-size: 0.95rem;
+
+        @include xl {
+          font-size: 0.9rem;
+          padding: 0.5rem 0.15rem;
+        }
+
+        &:hover,
+        &.active {
+          color: var(--primary-color);
+        }
+
+        &.fragment-link {
+          cursor: pointer;
+        }
+
+        &.login-link {
+          color: var(--white);
+          background-color: var(--primary-color);
+          padding: 0.5rem 1rem;
+          border-radius: var(--border-radius);
+
+          &:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+          }
+        }
+      }
+
+      .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        cursor: pointer;
+
+        i {
+          font-size: 0.75rem;
+          transition: transform 0.3s ease;
+        }
+
+        &[aria-expanded="true"] i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    padding: var(--space-xs) 0;
+    z-index: 10;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    li a {
+      padding: 0.5rem var(--space-sm);
+      font-size: 0.9375rem;
+
+      &:hover {
+        background-color: var(--light-bg);
+      }
+    }
+
+    .pastor-admin-link {
+      background-color: rgba(var(--primary-color-rgb), 0.15);
+      border-left: 3px solid var(--primary-color);
+
+      &:hover {
+        background-color: rgba(var(--primary-color-rgb), 0.25);
+      }
+    }
+
+    a.admin-link {
+      i {
+        margin-right: 0.5rem;
+        width: 1rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .nav-links {
+    li.pastor-nav-item {
+      a.featured-link {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--primary-color);
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover::after,
+        &.active::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+}
+
+/* Menu mobile */
+.navigation-wrapper {
+  display: none;
+
+  @include lg {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 100vh;
+    width: 280px;
+    max-width: 85%;
+    background-color: var(--white);
+    z-index: 1001;
+    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    &.active {
+      right: 0;
+    }
+
+    .nav-links {
+      display: block;
+      padding: 70px var(--space-sm) var(--space-sm);
+      margin: 0;
+      height: auto;
+      width: 100%;
+
+      @media (max-width: 480px) {
+        padding: 60px var(--space-xs) var(--space-xs);
+      }
+
+      li {
+        border-bottom: 1px solid var(--gray-bg);
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        a {
+          padding: var(--space-sm) var(--space-xs);
+          display: block;
+          width: 100%;
+          text-align: left;
+          font-size: 0.95rem;
+
+          @media (max-width: 480px) {
+            padding: calc(var(--space-xs) + 2px) var(--space-xs);
+            font-size: 0.9rem;
+          }
+
+          &.login-link {
+            display: inline-block;
+            margin-top: var(--space-sm);
+            text-align: center;
+          }
+        }
+
+        .dropdown-toggle {
+          width: 100%;
+          justify-content: space-between;
+          padding: var(--space-sm) var(--space-xs);
+          display: flex;
+
+          @media (max-width: 480px) {
+            padding: calc(var(--space-xs) + 2px) var(--space-xs);
+          }
+        }
+      }
+
+      .submenu {
+        position: static;
+        box-shadow: none;
+        background-color: var(--light-bg);
+        border-radius: 0;
+        opacity: 1;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transform: none;
+        transition: max-height 0.3s ease;
+        padding: 0;
+        margin: 0;
+
+        &.active {
+          visibility: visible;
+          max-height: 500px;
+          padding: var(--space-xs) 0;
+        }
+
+        li {
+          border-bottom: none;
+
+          a {
+            padding-left: var(--space-md);
+            font-size: 0.9rem;
+
+            @media (max-width: 480px) {
+              padding-left: var(--space-sm);
+              font-size: 0.85rem;
+            }
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 260px;
+  }
+
+  @media (max-width: 360px) {
+    width: 85%;
+  }
+
+  .nav-links {
+    li.highlight-item {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      a.featured-link {
+        background-color: rgba(var(--primary-color-rgb), 0.1);
+        border-radius: 8px;
+        padding: 0.75rem 1rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 4px solid var(--primary-color);
+
+        &:hover,
+        &:active,
+        &.active {
+          background-color: rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        i {
+          font-size: 1.2em;
+          margin-right: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+// Overlay para o menu mobile
+body:after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+body.menu-open:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ajustes para formulários dentro do header */
+input,
+button,
+select {
+  max-width: 100%;
+}
+
+/* Dispositivos muito pequenos - substituindo por mixin xxs */
+@include xxs {
+  .logo a span {
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
+
+  .navigation-wrapper {
+    width: 85%;
+  }
+}
+
+/* Estilo para links em destaque */
+.featured-link {
+  position: relative;
+  font-weight: 600;
+  color: var(--primary-color) !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+
+  &:hover,
+  &.active {
+    background-color: var(--primary-light);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+  }
+
+  i {
+    margin-right: 0.25rem;
+    font-size: 1.1em;
+  }
+}
+
+/* Adicionar pulsação ao ícone para destacar mais */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nav-links li .featured-link i {
+  animation: pulse 2s infinite;
+  display: inline-block;
+}
+
+/* Estilo para os links no dropdown do admin */
+.submenu {
+  width: 180px;
+
+  a.admin-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .pastor-admin-link {
+    background-color: rgba(var(--primary-color-rgb), 0.15);
+    border-left: 3px solid var(--primary-color);
+
+    &:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.25);
+    }
+  }
+
+  a.admin-link {
+    i {
+      margin-right: 0.5rem;
+      width: 1rem;
+      text-align: center;
+    }
+  }
+}

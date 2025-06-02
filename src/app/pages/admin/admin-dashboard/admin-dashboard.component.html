@@ -1,0 +1,514 @@
+<div class="dashboard-container">
+  <h2>Painel de Controle</h2>
+  <p>
+    Bem-vindo ao painel administrativo. Escolha uma opção abaixo para gerenciar
+    o conteúdo do site.
+  </p>
+
+  <!-- Cards de acesso rápido -->
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-home"></i>
+      </div>
+      <div class="card-content">
+        <h3>Página Inicial</h3>
+        <p>
+          Edite o conteúdo principal do site, incluindo textos e imagens
+          destacadas.
+        </p>
+        <button class="btn-primary" (click)="scrollToContent()">
+          Editar Conteúdo da Home
+        </button>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-calendar"></i>
+      </div>
+      <div class="card-content">
+        <h3>Eventos e Agenda</h3>
+        <p>
+          Gerencie os cultos, estudos bíblicos e eventos especiais da igreja.
+        </p>
+        <a routerLink="/admin/eventos" class="btn-primary">Gerenciar Eventos</a>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-money"></i>
+      </div>
+      <div class="card-content">
+        <h3>Financeiro</h3>
+        <p>Configure informações bancárias e PIX para dízimos e ofertas.</p>
+        <a routerLink="/admin/financeiro" class="btn-primary"
+          >Gerenciar Financeiro</a
+        >
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-user-circle"></i>
+      </div>
+      <div class="card-content">
+        <h3>Página do Pastor</h3>
+        <p>
+          Edite informações, biografia e trajetória pastoral do Rev. Marcelo
+          Carnaval.
+        </p>
+        <a routerLink="/admin/pastor" class="btn-primary"
+          >Editar Página do Pastor</a
+        >
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-file-text"></i>
+      </div>
+      <div class="card-content">
+        <h3>Páginas de Conteúdo</h3>
+        <p>
+          Edite o conteúdo das páginas sobre a igreja, pastor e reformadores.
+        </p>
+        <a routerLink="/admin/paginas" class="btn-primary">Gerenciar Páginas</a>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">
+        <i class="fa fa-address-book"></i>
+      </div>
+      <div class="card-content">
+        <h3>Informações de Contato</h3>
+        <p>Atualize endereço, telefone e redes sociais da igreja.</p>
+        <a routerLink="/admin/contato" class="btn-primary"
+          >Atualizar Contatos</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div id="content-editor" class="content-editor">
+    <h2>Editar Página Inicial</h2>
+    <p>Edite o conteúdo principal da página inicial do site.</p>
+
+    <div class="card">
+      <form [formGroup]="dadosForm" (ngSubmit)="onSubmit()" class="form">
+        <!-- Seção Hero -->
+        <h3 class="section-header">1. Seção Hero (Topo da Página)</h3>
+        <div class="form-group">
+          <label for="titulo">Título Principal</label>
+          <input
+            type="text"
+            id="titulo"
+            formControlName="titulo"
+            class="form-control"
+            [class.is-invalid]="
+              dadosForm.get('titulo')?.invalid &&
+              dadosForm.get('titulo')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              dadosForm.get('titulo')?.invalid &&
+              dadosForm.get('titulo')?.touched
+            "
+          >
+            O título é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subtitulo">Subtítulo</label>
+          <input
+            type="text"
+            id="subtitulo"
+            formControlName="subtitulo"
+            class="form-control"
+            [class.is-invalid]="
+              dadosForm.get('subtitulo')?.invalid &&
+              dadosForm.get('subtitulo')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              dadosForm.get('subtitulo')?.invalid &&
+              dadosForm.get('subtitulo')?.touched
+            "
+          >
+            O subtítulo é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea
+            id="descricao"
+            formControlName="descricao"
+            class="form-control"
+            rows="5"
+            [class.is-invalid]="
+              dadosForm.get('descricao')?.invalid &&
+              dadosForm.get('descricao')?.touched
+            "
+          ></textarea>
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              dadosForm.get('descricao')?.invalid &&
+              dadosForm.get('descricao')?.touched
+            "
+          >
+            A descrição é obrigatória.
+          </div>
+        </div>
+
+        <!-- Seção Pastor -->
+        <h3 class="section-header">2. Seção Pastor</h3>
+        <div class="form-group">
+          <label for="pastor_nome">Nome do Pastor</label>
+          <input
+            type="text"
+            id="pastor_nome"
+            formControlName="pastor_nome"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pastor_cargo">Cargo do Pastor</label>
+          <input
+            type="text"
+            id="pastor_cargo"
+            formControlName="pastor_cargo"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pastor_bio_curta">Biografia Curta</label>
+          <textarea
+            id="pastor_bio_curta"
+            formControlName="pastor_bio_curta"
+            class="form-control"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="pastor_formacao_curta">Formação e Experiência</label>
+          <textarea
+            id="pastor_formacao_curta"
+            formControlName="pastor_formacao_curta"
+            class="form-control"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <!-- Seção Reformadores -->
+        <h3 class="section-header">3. Seção Figuras Históricas</h3>
+        <div class="form-group">
+          <label for="reformadores_titulo">Título da Seção</label>
+          <input
+            type="text"
+            id="reformadores_titulo"
+            formControlName="reformadores_titulo"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="reformadores_descricao">Descrição da Seção</label>
+          <textarea
+            id="reformadores_descricao"
+            formControlName="reformadores_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Dados Lutero -->
+        <div class="form-group">
+          <label for="lutero_nome">Nome - Martinho Lutero</label>
+          <input
+            type="text"
+            id="lutero_nome"
+            formControlName="lutero_nome"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lutero_descricao">Descrição - Martinho Lutero</label>
+          <textarea
+            id="lutero_descricao"
+            formControlName="lutero_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Dados Calvino -->
+        <div class="form-group">
+          <label for="calvino_nome">Nome - João Calvino</label>
+          <input
+            type="text"
+            id="calvino_nome"
+            formControlName="calvino_nome"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="calvino_descricao">Descrição - João Calvino</label>
+          <textarea
+            id="calvino_descricao"
+            formControlName="calvino_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Dados Ashbel -->
+        <div class="form-group">
+          <label for="ashbel_nome">Nome - Ashbel Green Simonton</label>
+          <input
+            type="text"
+            id="ashbel_nome"
+            formControlName="ashbel_nome"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="ashbel_descricao"
+            >Descrição - Ashbel Green Simonton</label
+          >
+          <textarea
+            id="ashbel_descricao"
+            formControlName="ashbel_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Seção Agenda -->
+        <h3 class="section-header">4. Seção Agenda</h3>
+        <div class="form-group">
+          <label for="agenda_titulo">Título da Seção</label>
+          <input
+            type="text"
+            id="agenda_titulo"
+            formControlName="agenda_titulo"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="agenda_descricao">Descrição da Seção</label>
+          <textarea
+            id="agenda_descricao"
+            formControlName="agenda_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-subsection">
+          <div class="admin-action-box">
+            <h4>Gerenciar Eventos</h4>
+            <p>Configure os eventos que aparecerão na sua agenda.</p>
+            <a routerLink="/admin/eventos" class="btn-primary">
+              <i class="fa fa-calendar"></i> Gerenciar Eventos
+            </a>
+          </div>
+        </div>
+
+        <!-- Seção Localização -->
+        <h3 class="section-header">5. Seção Localização</h3>
+        <div class="form-group">
+          <label for="localizacao_titulo">Título da Seção</label>
+          <input
+            type="text"
+            id="localizacao_titulo"
+            formControlName="localizacao_titulo"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="localizacao_descricao">Descrição da Seção</label>
+          <textarea
+            id="localizacao_descricao"
+            formControlName="localizacao_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Seção Dízimos -->
+        <h3 class="section-header">6. Seção Dízimos e Ofertas</h3>
+        <div class="form-group">
+          <label for="dizimos_titulo">Título da Seção</label>
+          <input
+            type="text"
+            id="dizimos_titulo"
+            formControlName="dizimos_titulo"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dizimos_descricao">Descrição da Seção</label>
+          <textarea
+            id="dizimos_descricao"
+            formControlName="dizimos_descricao"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-subsection">
+          <div class="admin-action-box">
+            <h4>Gerenciar Informações Financeiras</h4>
+            <p>Configure os dados bancários e chaves PIX para contribuições.</p>
+            <a routerLink="/admin/financeiro" class="btn-primary">
+              <i class="fa fa-money"></i> Gerenciar Dados Financeiros
+            </a>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="dadosForm.invalid || isSaving"
+          >
+            <span *ngIf="!isSaving">Salvar Alterações</span>
+            <span *ngIf="isSaving">Salvando...</span>
+          </button>
+        </div>
+
+        <div class="alert alert-success" *ngIf="saveSuccess">
+          Alterações salvas com sucesso!
+        </div>
+      </form>
+    </div>
+
+    <div class="tips-card">
+      <h3>Dicas</h3>
+      <ul>
+        <li>O título principal aparece em destaque na página inicial.</li>
+        <li>
+          Os campos obrigatórios estão marcados e não podem ficar em branco.
+        </li>
+        <li>
+          As alterações serão refletidas imediatamente no site após salvar.
+        </li>
+        <li>
+          Para manter um layout harmonioso, evite textos muito longos nos
+          títulos.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Nova seção de gerenciamento de outras páginas -->
+    <div class="other-pages-section">
+      <h2>Gerenciamento de Outras Páginas</h2>
+      <p>
+        Abaixo você encontra acesso direto para edição de todas as páginas do
+        site:
+      </p>
+
+      <div class="page-card">
+        <div class="page-icon">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="page-content">
+          <h3>Página do Pastor</h3>
+          <p>
+            Edite a biografia, formação e informações do pastor com o editor
+            dedicado.
+          </p>
+          <a routerLink="/admin/pastor" class="btn-secondary editor-especial">
+            Editor Dedicado <i class="fa fa-star"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-icon">
+          <i class="fa fa-book"></i>
+        </div>
+        <div class="page-content">
+          <h3>Martinho Lutero</h3>
+          <p>Edite informações sobre a vida e contribuições de Lutero.</p>
+          <a
+            routerLink="/admin/paginas"
+            [queryParams]="{ pagina: 'lutero' }"
+            class="btn-secondary"
+          >
+            Editar Página
+          </a>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-icon">
+          <i class="fa fa-book"></i>
+        </div>
+        <div class="page-content">
+          <h3>João Calvino</h3>
+          <p>Edite informações sobre a vida e contribuições de Calvino.</p>
+          <a
+            routerLink="/admin/paginas"
+            [queryParams]="{ pagina: 'calvino' }"
+            class="btn-secondary"
+          >
+            Editar Página
+          </a>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-icon">
+          <i class="fa fa-book"></i>
+        </div>
+        <div class="page-content">
+          <h3>Ashbel Green Simonton</h3>
+          <p>Edite informações sobre a vida e legado de Simonton no Brasil.</p>
+          <a
+            routerLink="/admin/paginas"
+            [queryParams]="{ pagina: 'ashbel' }"
+            class="btn-secondary"
+          >
+            Editar Página
+          </a>
+        </div>
+      </div>
+
+      <div class="page-card">
+        <div class="page-icon">
+          <i class="fa fa-list-ol"></i>
+        </div>
+        <div class="page-content">
+          <h3>Escalas de Serviço</h3>
+          <p>Gerencie as escalas de louvor, recepção, leitura bíblica, etc.</p>
+          <a
+            routerLink="/admin/paginas"
+            [queryParams]="{ pagina: 'escalas' }"
+            class="btn-secondary"
+          >
+            Editar Escalas
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

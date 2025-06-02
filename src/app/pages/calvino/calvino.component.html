@@ -1,0 +1,134 @@
+<div class="figura-page">
+ {{ cms['calvino-0'] }} 
+<section class="figura-banner">
+<div class="container">
+<h1>{{ cms['calvino-1'] }}</h1>
+<p class="subtitle">{{ cms['calvino-2'] }}</p>
+</div>
+</section>
+ {{ cms['calvino-3'] }} 
+<section class="figura-principal">
+<div class="container">
+<div class="figura-content">
+<div class="figura-image">
+<img alt="João Calvino" loading="lazy" src="assets/imagens/João Calvino.svg"/>
+</div>
+<div class="figura-text">
+<h2>{{ cms['calvino-4'] }}</h2>
+<p>
+            {{ cms['calvino-5'] }}
+          </p>
+<p>
+            {{ cms['calvino-6'] }}
+          </p>
+<p>
+            {{ cms['calvino-7'] }}
+          </p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-8'] }} 
+<section class="timeline-section">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-9'] }}</h2>
+<p class="section-description">{{ cms['calvino-10'] }}</p>
+<div class="timeline">
+<div *ngfor="let event of timelineEvents" class="timeline-item">
+<div class="timeline-marker">{{ event.year }}</div>
+<div class="timeline-content">
+<h3>{{ event.title }}</h3>
+<p>{{ event.description }}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-11'] }} 
+<section class="local-historico">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-12'] }}</h2>
+<p class="section-description">{{ cms['calvino-13'] }}</p>
+<div class="local-grid">
+<div class="local-imagem">
+<img alt="Genebra, Suíça" loading="lazy" src="assets/imagens/Genebra.jpg"/>
+</div>
+<div class="local-texto">
+<h2>{{ cms['calvino-14'] }}</h2>
+<p>
+            {{ cms['calvino-15'] }}
+          </p>
+<p>
+            {{ cms['calvino-16'] }}
+          </p>
+<p>
+            {{ cms['calvino-17'] }}
+          </p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-18'] }} 
+<section class="legado-section">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-19'] }}</h2>
+<p class="section-description">{{ cms['calvino-20'] }}</p>
+<div class="legado-grid">
+<div *ngfor="let item of legados" class="legado-item">
+<div class="legado-icon">
+<i [class]="item.icon"></i>
+</div>
+<h3>{{ item.title }}</h3>
+<p>{{ item.description }}</p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-21'] }} 
+<section class="quote-section">
+<div class="container">
+<blockquote>
+        {{ cms['calvino-22'] }}
+        <cite>{{ cms['calvino-23'] }}</cite>
+</blockquote>
+</div>
+</section>
+ {{ cms['calvino-24'] }} 
+<section class="denominacoes-section">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-25'] }}</h2>
+<p class="section-description">{{ cms['calvino-26'] }}</p>
+<div class="denominacoes-grid">
+<div *ngfor="let denom of denominacoes" class="denominacao-item">
+<h3>{{ denom.name }}</h3>
+<p>{{ denom.description }}</p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-27'] }} 
+<section class="curiosidades-section">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-28'] }}</h2>
+<p class="section-description">{{ cms['calvino-29'] }}</p>
+<div class="curiosidades-lista">
+<div *ngfor="let curiosidade of curiosidades; let i = index" class="curiosidade-item">
+<div class="numero">{{ i + 1 }}</div>
+<div class="curiosidade-content">
+<h3>{{ curiosidade.title }}</h3>
+<p>{{ curiosidade.description }}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['calvino-30'] }} 
+<section class="soli-section">
+<div class="container">
+<h2 class="section-title">{{ cms['calvino-31'] }}</h2>
+<p class="section-description">
+        {{ cms['calvino-32'] }}
+      </p>
+</div>
+</section>
+</div>

@@ -1,0 +1,452 @@
+@use "../../../styles/variables" as *;
+
+.sobre-page {
+  position: relative;
+
+  /* Estilos gerais para a página */
+  section {
+    padding: var(--space-xl) 0;
+
+    @include md {
+      padding: var(--space-lg) 0;
+    }
+
+    @include sm {
+      padding: var(--space-md) 0;
+    }
+  }
+}
+
+// Banner da página
+.sobre-banner {
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--white);
+  padding: var(--space-xxl) 0;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+
+    @include sm {
+      height: 40px;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-sm);
+
+    @include md {
+      font-size: 2.5rem;
+    }
+
+    @include sm {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+
+    @include sm {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+// Seção História
+.sobre-historia {
+  background-color: var(--white);
+
+  .sobre-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+
+    @include md {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .sobre-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow);
+
+      @include md {
+        max-height: 350px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .sobre-text {
+    h2 {
+      margin-bottom: var(--space-md);
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: var(--space-xs);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: 3px;
+      }
+    }
+
+    p {
+      margin-bottom: var(--space-sm);
+      line-height: 1.7;
+    }
+  }
+}
+
+// Timeline na seção de Crescimento
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-sm) 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background-color: var(--primary-light);
+    transform: translateX(-50%);
+
+    @include md {
+      left: 30px;
+    }
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: flex-start;
+    padding: var(--space-md) 0;
+    position: relative;
+    width: 100%;
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+
+      .timeline-content {
+        margin-right: var(--space-lg);
+        margin-left: 0;
+        text-align: right;
+
+        @include md {
+          margin-right: 0;
+          margin-left: var(--space-lg);
+          text-align: left;
+        }
+      }
+    }
+
+    @include md {
+      flex-direction: row !important;
+
+      .timeline-content {
+        margin-left: var(--space-lg) !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+      }
+    }
+  }
+
+  .timeline-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--white);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(233, 78, 27, 0.2);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+
+    @include md {
+      width: 50px;
+      height: 50px;
+      font-size: 1.25rem;
+      left: 30px;
+    }
+
+    @include sm {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+
+  .timeline-content {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+    margin-left: var(--space-lg);
+    width: calc(50% - var(--space-xl));
+    transition: var(--transition);
+
+    @include md {
+      width: calc(100% - 80px - var(--space-lg));
+    }
+
+    @include sm {
+      padding: var(--space-sm);
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    h3 {
+      margin-bottom: var(--space-xs);
+      color: var(--primary-color);
+    }
+
+    .timeline-date {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: var(--space-xs);
+    }
+
+    p {
+      margin-bottom: 0;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+  }
+}
+
+// Seção Cinco Solas
+.servicos-section {
+  background-color: var(--light-bg);
+
+  .servicos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .servico-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .servico-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: rgba(233, 78, 27, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-sm);
+      color: var(--primary-color);
+      font-size: 1.75rem;
+    }
+
+    h3 {
+      margin-bottom: var(--space-sm);
+      color: var(--text-color);
+    }
+
+    p {
+      color: var(--dark-light);
+      line-height: 1.6;
+    }
+  }
+}
+
+// Seção Visão e Propósito
+.especialidades {
+  background-color: var(--white);
+
+  .especialidades-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+
+    @include md {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .coluna-especialidade {
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+
+    h3 {
+      color: var(--primary-color);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    ul {
+      padding-left: var(--space-md);
+      margin: 0;
+
+      li {
+        margin-bottom: var(--space-xs);
+        line-height: 1.6;
+
+        strong {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
+// Seção Liderança
+.diferenciais {
+  background-color: var(--light-bg);
+
+  .container-diferenciais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .coluna-diferencial {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    h3 {
+      color: var(--primary-color);
+      margin-bottom: var(--space-sm);
+      position: relative;
+      padding-bottom: var(--space-xs);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-color);
+      }
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--dark-light);
+    }
+  }
+}
+
+// Seção Gratidão Final
+#gratidao {
+  .sobre-content {
+    display: block;
+    padding: var(--space-lg) 0;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+
+    @include sm {
+      font-size: 1rem;
+    }
+  }
+
+  .agradecimento-final {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--primary-color);
+
+    @include sm {
+      font-size: 1.125rem;
+    }
+  }
+}

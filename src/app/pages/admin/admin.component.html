@@ -1,0 +1,83 @@
+<div *ngIf="isAdminAuthorized; else unauthorizedBlock" class="admin-container">
+  <aside class="admin-sidebar">
+    <div class="user-info">
+      <h3>{{ currentUser?.name }}</h3>
+      <div class="user-role">
+        <span [ngClass]="{ 'admin-badge': currentUser?.role === 'admin' }">
+          {{ currentUser?.role === "admin" ? "Administrador" : "Editor" }}
+        </span>
+      </div>
+      <div *ngIf="sessionExpiryTime" class="session-info">
+        <small
+          >Sessão válida até {{ sessionExpiryTime | date : "HH:mm" }}</small
+        >
+      </div>
+    </div>
+
+    <nav class="admin-nav">
+      <ul>
+        <li>
+          <a
+            routerLink="/admin"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i class="fa fa-dashboard"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/eventos" routerLinkActive="active">
+            <i class="fa fa-calendar"></i> Eventos
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/contato" routerLinkActive="active">
+            <i class="fa fa-address-book"></i> Contato
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/financeiro" routerLinkActive="active">
+            <i class="fa fa-money"></i> Financeiro
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/admin/pastor" routerLinkActive="active">
+            <i class="fa fa-user-circle"></i> Pastor
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/admin/usuarios" routerLinkActive="active">
+            <i class="fa fa-users"></i> Usuários
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="logout-btn">
+      <button (click)="logout()">Sair</button>
+    </div>
+  </aside>
+
+  <main class="admin-content">
+    <div class="header">
+      <h1>Painel Administrativo</h1>
+      <p>Gerencie o conteúdo do site da Igreja Presbiteriana de Macaé</p>
+    </div>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Template para usuário não autorizado -->
+<ng-template #unauthorizedBlock>
+  <div class="unauthorized-container">
+    <div class="unauthorized-message">
+      <h2><i class="fa fa-exclamation-triangle"></i> Acesso Restrito</h2>
+      <p>Você não tem permissão para acessar esta área.</p>
+      <p>Por favor, faça login com credenciais de administrador.</p>
+      <button (click)="goToLogin()">Ir para o Login</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,39 @@
+<div class="pages-container">
+  <div class="admin-header">
+    <h2>Páginas</h2>
+    <a routerLink="/admin" class="btn-voltar">
+      <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
+    </a>
+  </div>
+
+  <!-- Link especial para o editor do pastor -->
+  <div class="special-page-link">
+    <a
+      (click)="router.navigate(['/admin/pastor'])"
+      class="special-link"
+      style="cursor: pointer"
+    >
+      <div class="special-link-content">
+        <div class="special-link-icon">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="special-link-text">
+          <span class="title">Página do Pastor (Editor Dedicado)</span>
+          <p>
+            Use o editor especializado com campos dedicados para cada seção da
+            página do pastor
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <ul>
+    <li *ngFor="let p of pages">
+      <a (click)="navegarParaEditor(p.slug)" style="cursor: pointer">
+        <span class="title">{{ p.titulo }}</span>
+        <code>{{ p.slug }}</code>
+      </a>
+    </li>
+  </ul>
+</div>

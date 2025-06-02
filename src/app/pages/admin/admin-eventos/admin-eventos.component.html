@@ -1,0 +1,215 @@
+<div class="eventos-container">
+  <div class="admin-header">
+    <h2>{{ modoEdicao ? "Editar Evento" : "Adicionar Novo Evento" }}</h2>
+    <a routerLink="/admin" class="btn-voltar">
+      <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
+    </a>
+  </div>
+
+  <div class="card">
+    <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="titulo">Título do Evento</label>
+        <input
+          type="text"
+          id="titulo"
+          formControlName="titulo"
+          class="form-control"
+          [class.is-invalid]="
+            eventoForm.get('titulo')?.invalid &&
+            eventoForm.get('titulo')?.touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            eventoForm.get('titulo')?.invalid &&
+            eventoForm.get('titulo')?.touched
+          "
+        >
+          O título é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="data">Data</label>
+          <input
+            type="date"
+            id="data"
+            formControlName="data"
+            class="form-control"
+            [class.is-invalid]="
+              eventoForm.get('data')?.invalid && eventoForm.get('data')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              eventoForm.get('data')?.invalid && eventoForm.get('data')?.touched
+            "
+          >
+            A data é obrigatória.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="hora">Hora</label>
+          <input
+            type="time"
+            id="hora"
+            formControlName="hora"
+            class="form-control"
+            [class.is-invalid]="
+              eventoForm.get('hora')?.invalid && eventoForm.get('hora')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              eventoForm.get('hora')?.invalid && eventoForm.get('hora')?.touched
+            "
+          >
+            A hora é obrigatória.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipo">Tipo de Evento</label>
+          <select
+            id="tipo"
+            formControlName="tipo"
+            class="form-control"
+            [class.is-invalid]="
+              eventoForm.get('tipo')?.invalid && eventoForm.get('tipo')?.touched
+            "
+          >
+            <option *ngFor="let tipo of tiposEvento" [value]="tipo.value">
+              {{ tipo.label }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="local">Local</label>
+          <input
+            type="text"
+            id="local"
+            formControlName="local"
+            class="form-control"
+            [class.is-invalid]="
+              eventoForm.get('local')?.invalid &&
+              eventoForm.get('local')?.touched
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              eventoForm.get('local')?.invalid &&
+              eventoForm.get('local')?.touched
+            "
+          >
+            O local é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea
+          id="descricao"
+          formControlName="descricao"
+          class="form-control"
+          rows="3"
+          [class.is-invalid]="
+            eventoForm.get('descricao')?.invalid &&
+            eventoForm.get('descricao')?.touched
+          "
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            eventoForm.get('descricao')?.invalid &&
+            eventoForm.get('descricao')?.touched
+          "
+        >
+          A descrição é obrigatória.
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="eventoForm.invalid || isSaving"
+        >
+          <span *ngIf="!isSaving">{{
+            modoEdicao ? "Atualizar Evento" : "Adicionar Evento"
+          }}</span>
+          <span *ngIf="isSaving">Salvando...</span>
+        </button>
+
+        <button
+          type="button"
+          class="btn-secondary"
+          *ngIf="modoEdicao"
+          (click)="cancelarEdicao()"
+        >
+          Cancelar
+        </button>
+      </div>
+
+      <div class="alert alert-success" *ngIf="saveSuccess">
+        Evento {{ modoEdicao ? "atualizado" : "adicionado" }} com sucesso!
+      </div>
+
+      <div class="alert alert-danger" *ngIf="saveError">
+        Erro ao salvar evento. Por favor, tente novamente.
+      </div>
+    </form>
+  </div>
+
+  <h2>Eventos Cadastrados</h2>
+
+  <div class="events-list">
+    <div class="event-card" *ngFor="let evento of eventos">
+      <div class="event-date">
+        <span class="day">{{ evento.dia }}</span>
+        <span class="month">{{ evento.mes }}</span>
+      </div>
+
+      <div class="event-details">
+        <h3>{{ evento.titulo }}</h3>
+        <p class="event-time">
+          <strong>Horário:</strong> {{ evento.hora }} | <strong>Local:</strong>
+          {{ evento.local }}
+        </p>
+        <p class="event-description">{{ evento.descricao }}</p>
+        <div class="event-type" [ngClass]="'event-type-' + evento.tipo">
+          {{
+            evento.tipo === "culto"
+              ? "Culto"
+              : evento.tipo === "estudo"
+              ? "Estudo"
+              : evento.tipo === "especial"
+              ? "Evento Especial"
+              : "Outro"
+          }}
+        </div>
+      </div>
+
+      <div class="event-actions">
+        <button class="btn-edit" (click)="editarEvento(evento)">Editar</button>
+        <button class="btn-delete" (click)="removerEvento(evento.id)">
+          Excluir
+        </button>
+      </div>
+    </div>
+
+    <div class="no-events" *ngIf="eventos.length === 0">
+      Nenhum evento cadastrado.
+    </div>
+  </div>
+</div>

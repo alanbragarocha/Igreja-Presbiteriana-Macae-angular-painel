@@ -1,0 +1,450 @@
+@use "../../../styles/variables" as *;
+
+.figura-page {
+  color: var(--text-color);
+  width: 100%;
+  overflow-x: hidden; /* Prevenir overflow horizontal */
+}
+
+/* Banner da página */
+.figura-banner {
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--light-text);
+  padding: var(--space-xl) 0;
+  text-align: center;
+  margin-bottom: var(--space-lg);
+
+  @media (max-width: 514px) {
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-md);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+
+    @media (max-width: 514px) {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+
+    @media (max-width: 514px) {
+      font-size: 1rem;
+      padding: 0 15px;
+    }
+  }
+}
+
+/* Seção Principal */
+.figura-principal {
+  padding: var(--space-xl) 0;
+  margin-bottom: 60px;
+
+  @media (max-width: 514px) {
+    padding: 20px 0;
+    margin-bottom: 40px;
+  }
+
+  .figura-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-lg);
+    align-items: center;
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 514px) {
+      gap: 20px;
+    }
+
+    .figura-image {
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+      }
+    }
+
+    .figura-text {
+      h2 {
+        color: var(--primary-color);
+        margin-bottom: var(--space-md);
+        font-size: 2.2rem;
+
+        @media (max-width: 514px) {
+          font-size: 1.6rem;
+          margin-bottom: 15px;
+        }
+      }
+
+      p {
+        margin-bottom: var(--space-sm);
+        font-size: 1.1rem;
+        line-height: 1.6;
+
+        @media (max-width: 514px) {
+          font-size: 1rem;
+          margin-bottom: 15px;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+/* Seções com títulos centralizados */
+.section-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 514px) {
+    font-size: 1.5rem;
+  }
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+  color: var(--text-light);
+
+  @media (max-width: 514px) {
+    font-size: 0.95rem;
+    margin: 0 auto 25px;
+    padding: 0 15px;
+  }
+}
+
+/* Timeline */
+.timeline-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--light-bg);
+
+  @media (max-width: 514px) {
+    padding: 30px 0;
+    margin-bottom: 40px;
+  }
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 49.5%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-color);
+
+    @include md {
+      left: 30px;
+    }
+
+    @media (max-width: 514px) {
+      left: 30px;
+    }
+  }
+
+  .timeline-item {
+    display: flex;
+    margin-bottom: var(--space-lg);
+    position: relative;
+
+    @include md {
+      flex-direction: column;
+    }
+
+    @media (max-width: 514px) {
+      padding-left: 60px;
+      padding-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      flex: 0 0 100px;
+      width: 100px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: var(--border-radius);
+      position: relative;
+      z-index: 2;
+      font-size: 1.2rem;
+
+      @include md {
+        margin-left: 50px;
+        margin-bottom: var(--space-sm);
+      }
+
+      @media (max-width: 514px) {
+        width: 45px;
+        height: 45px;
+        left: 8px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .timeline-content {
+      flex: 1;
+      background-color: var(--white);
+      padding: var(--space-md);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-left: var(--space-lg);
+
+      @include md {
+        margin-left: 0;
+      }
+
+      @media (max-width: 514px) {
+        padding: 15px;
+      }
+
+      h3 {
+        color: var(--primary-color);
+        margin-bottom: var(--space-sm);
+
+        @media (max-width: 514px) {
+          font-size: 1.2rem;
+          margin-bottom: 8px;
+        }
+      }
+
+      p {
+        line-height: 1.6;
+        margin: 0;
+
+        @media (max-width: 514px) {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+/* Legado Grid */
+.legado-section {
+  padding: var(--space-xl) 0;
+
+  @media (max-width: 514px) {
+    padding: 30px 0;
+    margin-bottom: 40px;
+  }
+}
+
+.legado-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+
+  @media (max-width: 514px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .legado-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 514px) {
+      padding: 20px;
+    }
+
+    .legado-icon {
+      margin-bottom: var(--space-md);
+      color: var(--primary-color);
+
+      i {
+        font-size: 2.5rem;
+
+        @media (max-width: 514px) {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    h3 {
+      margin-bottom: var(--space-sm);
+      color: var(--primary-color);
+
+      @media (max-width: 514px) {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--text-color);
+
+      @media (max-width: 514px) {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+/* Citação */
+.quote-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--dark-bg);
+
+  @media (max-width: 514px) {
+    padding: 40px 0;
+    margin-bottom: 40px;
+  }
+
+  blockquote {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-style: italic;
+    text-align: center;
+    color: var(--white);
+
+    @media (max-width: 514px) {
+      font-size: 1.3rem;
+      line-height: 1.3;
+      padding: 0 15px;
+    }
+
+    cite {
+      display: block;
+      margin-top: var(--space-md);
+      font-size: 1rem;
+      font-style: normal;
+      color: var(--white);
+      opacity: 0.8;
+
+      @media (max-width: 514px) {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+/* Denominações */
+.denominacoes-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--light-bg);
+}
+
+.denominacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+
+  .denominacao-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+
+    h3 {
+      color: var(--primary-color);
+      margin-bottom: var(--space-sm);
+      font-size: 1.3rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+/* Curiosidades */
+.curiosidades-section {
+  padding: var(--space-xl) 0;
+}
+
+.curiosidades-lista {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .curiosidade-item {
+    display: flex;
+    margin-bottom: var(--space-lg);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .numero {
+      flex: 0 0 60px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      opacity: 0.5;
+    }
+
+    .curiosidade-content {
+      p {
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+/* Soli Deo Gloria */
+.soli-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+
+  .section-title {
+    color: var(--white);
+  }
+
+  .section-description {
+    color: var(--white);
+    opacity: 0.9;
+    margin-bottom: 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}

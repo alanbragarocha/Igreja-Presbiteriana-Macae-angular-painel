@@ -1,0 +1,146 @@
+<div class="figura-page">
+ {{ cms['lutero-0'] }} 
+<section class="figura-banner">
+<div class="container">
+<h1>{{ cms['lutero-1'] }}</h1>
+<p class="subtitle">
+        {{ cms['lutero-2'] }}
+      </p>
+</div>
+</section>
+ {{ cms['lutero-3'] }} 
+<section class="figura-principal">
+<div class="container">
+<div class="figura-content">
+<div class="figura-image">
+<img alt="Martinho Lutero" loading="lazy" src="assets/imagens/martinho lutero.svg"/>
+</div>
+<div class="figura-text">
+<h2>{{ cms['lutero-4'] }}</h2>
+<p>
+            {{ cms['lutero-5'] }}
+          </p>
+<p>
+            {{ cms['lutero-6'] }}
+          </p>
+<p>
+            {{ cms['lutero-7'] }}
+          </p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-8'] }} 
+<section class="timeline-section">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-9'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-10'] }}
+      </p>
+<div class="timeline">
+<div *ngfor="let event of timelineEvents" class="timeline-item">
+<div class="timeline-marker">{{ event.year }}</div>
+<div class="timeline-content">
+<h3>{{ event.title }}</h3>
+<p>{{ event.description }}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-11'] }} 
+<section class="local-historico">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-12'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-13'] }}
+      </p>
+<div class="local-grid">
+<div class="local-imagem">
+<img alt="Castelo de Wartburg" loading="lazy" src="assets/imagens/Castelo de Wartburg .jpg"/>
+</div>
+<div class="local-texto">
+<h2>{{ cms['lutero-14'] }}</h2>
+<p>
+            {{ cms['lutero-15'] }}
+          </p>
+<p>
+            {{ cms['lutero-16'] }}
+          </p>
+<p>
+            {{ cms['lutero-17'] }}
+          </p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-18'] }} 
+<section class="legado-section">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-19'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-20'] }}
+      </p>
+<div class="legado-grid">
+<div *ngfor="let item of legados" class="legado-item">
+<div class="legado-icon">
+<i [class]="item.icon"></i>
+</div>
+<h3>{{ item.title }}</h3>
+<p>{{ item.description }}</p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-21'] }} 
+<section class="quote-section">
+<div class="container">
+<blockquote>
+        {{ cms['lutero-22'] }}
+        <cite>{{ cms['lutero-23'] }}</cite>
+</blockquote>
+</div>
+</section>
+ {{ cms['lutero-24'] }} 
+<section class="denominacoes-section">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-25'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-26'] }}
+      </p>
+<div class="denominacoes-grid">
+<div *ngfor="let principio of principios" class="denominacao-item">
+<h3>{{ principio.titulo }}</h3>
+<p>{{ principio.descricao }}</p>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-27'] }} 
+<section class="curiosidades-section">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-28'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-29'] }}
+      </p>
+<div class="curiosidades-lista">
+<div *ngfor="let curiosidade of curiosidades; let i = index" class="curiosidade-item">
+<div class="numero">{{ i + 1 }}</div>
+<div class="curiosidade-content">
+<h3>{{ curiosidade.title }}</h3>
+<p>{{ curiosidade.description }}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+ {{ cms['lutero-30'] }} 
+<section class="soli-section">
+<div class="container">
+<h2 class="section-title">{{ cms['lutero-31'] }}</h2>
+<p class="section-description">
+        {{ cms['lutero-32'] }}
+      </p>
+</div>
+</section>
+</div>

@@ -1,0 +1,286 @@
+{{ cms["header-0"] }}
+<div class="proximos-eventos">
+  <div class="container">
+    <div class="eventos-slider">
+      <div class="evento-item">
+        <div class="evento-icone">
+          <svg
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewbox="0 0 24 24"
+            width="16"
+          >
+            <rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+            <line x1="16" x2="16" y1="2" y2="6"></line>
+            <line x1="8" x2="8" y1="2" y2="6"></line>
+            <line x1="3" x2="21" y1="10" y2="10"></line>
+          </svg>
+        </div>
+        <span>{{ cms["header-1"] }}</span>
+      </div>
+      <div class="evento-item">
+        <div class="evento-icone">
+          <svg
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewbox="0 0 24 24"
+            width="16"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <span>{{ cms["header-2"] }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<header>
+  <div class="container header-container">
+    {{ cms["header-3"] }}
+    <div class="logo">
+      <a routerLink="/">
+        <span class="full-title">{{ cms["header-4"] }}</span>
+        <span class="short-title">{{ cms["header-5"] }}</span>
+      </a>
+    </div>
+    {{ cms["header-6"] }}
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li>
+          <a
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/"
+            routerLinkActive="active"
+          >
+            {{ cms["header-7"] }}
+          </a>
+        </li>
+        <li>
+          <a routerLink="/sobre" routerLinkActive="active">{{
+            cms["header-8"]
+          }}</a>
+        </li>
+        <li class="pastor-nav-item">
+          <a
+            routerLink="/pastor"
+            routerLinkActive="active"
+            class="featured-link"
+          >
+            <i class="fa fa-user-circle"></i> {{ cms["header-9"] }}</a
+          >
+        </li>
+
+        <li>
+          <a
+            (click)="navigateToFragment('localizacao')"
+            class="fragment-link"
+            >{{ cms["header-15"] }}</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="navigateToFragment('dizimos-ofertas')"
+            class="fragment-link"
+            >{{ cms["header-16"] }}</a
+          >
+        </li>
+        <li>
+          <a routerLink="/escalas" routerLinkActive="active">{{
+            cms["header-17"]
+          }}</a>
+        </li>
+        <li *ngIf="!isAuthenticated">
+          <a class="login-link" routerLink="/login" routerLinkActive="active">{{
+            cms["header-18"]
+          }}</a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a
+            class="admin-link dropdown-toggle"
+            (click)="navigateToAdminPanel($event, 'admin')"
+          >
+            <i class="fas fa-tachometer-alt"></i> Admin
+          </a>
+          <div class="submenu" *ngIf="activeDropdown === 'admin'">
+            <a class="admin-link" routerLink="/admin" routerLinkActive="active">
+              <i class="fas fa-tachometer-alt"></i> Painel Admin
+            </a>
+            <a
+              class="admin-link pastor-admin-link"
+              routerLink="/admin/pastor"
+              routerLinkActive="active"
+            >
+              <i class="fas fa-user-edit"></i> Editar Pastor
+            </a>
+            <a
+              class="admin-link"
+              routerLink="/admin/eventos"
+              routerLinkActive="active"
+            >
+              <i class="fas fa-calendar-alt"></i> Eventos
+            </a>
+            <a
+              class="admin-link"
+              routerLink="/pastor"
+              routerLinkActive="active"
+            >
+              <i class="fas fa-eye"></i> Ver Página Pastor
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    {{ cms["header-19"] }}
+    <button
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+      aria-label="Menu principal"
+      class="menu-hamburger"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    {{ cms["header-20"] }}
+    <div [class.active]="isMenuOpen" class="navigation-wrapper">
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a
+              (click)="navigateToPage('/')"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="active"
+            >
+              {{ cms["header-21"] }}
+            </a>
+          </li>
+          <li>
+            <a (click)="navigateToPage('/sobre')" routerLinkActive="active">
+              {{ cms["header-22"] }}
+            </a>
+          </li>
+          <li class="highlight-item">
+            <a
+              (click)="navigateToPage('/pastor')"
+              routerLinkActive="active"
+              class="featured-link"
+            >
+              <i class="fa fa-user-circle"></i> {{ cms["header-23"] }}
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="toggleDropdown($event, 'reforma-mobile')"
+              [attr.aria-expanded]="activeDropdown === 'reforma-mobile'"
+              class="dropdown-toggle"
+            >
+              {{ cms["header-24"] }}
+              <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul
+              [class.active]="activeDropdown === 'reforma-mobile'"
+              class="submenu"
+            >
+              <li>
+                <a
+                  (click)="navigateToPage('/calvino')"
+                  routerLinkActive="active"
+                >
+                  <i class="fas fa-book"></i> {{ cms["header-25"] }}
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="navigateToPage('/lutero')"
+                  routerLinkActive="active"
+                >
+                  <i class="fas fa-church"></i> {{ cms["header-26"] }}
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="navigateToPage('/ashbel')"
+                  routerLinkActive="active"
+                >
+                  <i class="fas fa-cross"></i> {{ cms["header-27"] }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a (click)="navigateToFragment('agenda')" class="fragment-link">
+              {{ cms["header-28"] }}
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="navigateToFragment('localizacao')"
+              class="fragment-link"
+            >
+              {{ cms["header-29"] }}
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="navigateToFragment('dizimos-ofertas')"
+              class="fragment-link"
+            >
+              {{ cms["header-30"] }}
+            </a>
+          </li>
+          <li>
+            <a (click)="navigateToPage('/escalas')" routerLinkActive="active">
+              {{ cms["header-31"] }}
+            </a>
+          </li>
+          <li *ngIf="!isAuthenticated">
+            <a
+              (click)="navigateToPage('/login')"
+              class="login-link"
+              routerLinkActive="active"
+            >
+              {{ cms["header-32"] }}
+            </a>
+          </li>
+          <li *ngIf="isAuthenticated">
+            <a
+              (click)="navigateToAdminPanel($event, 'admin-mobile')"
+              class="admin-link dropdown-toggle"
+            >
+              <i class="fas fa-tachometer-alt"></i> Admin
+            </a>
+            <ul
+              [class.active]="activeDropdown === 'admin-mobile'"
+              class="submenu"
+            >
+              <li>
+                <a (click)="navigateToPage('/admin')">
+                  <i class="fas fa-tachometer-alt"></i> Painel Admin
+                </a>
+              </li>
+              <li>
+                <a (click)="navigateToPage('/admin/pastor')">
+                  <i class="fas fa-user-edit"></i> Editar Pastor
+                </a>
+              </li>
+              <li>
+                <a (click)="navigateToPage('/admin/eventos')">
+                  <i class="fas fa-calendar-alt"></i> Eventos
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

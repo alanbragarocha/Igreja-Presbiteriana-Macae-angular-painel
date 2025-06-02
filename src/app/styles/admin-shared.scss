@@ -1,0 +1,33 @@
+// Estilos compartilhados para seções administrativas
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-voltar {
+  background-color: #5a7db6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #4a6da7;
+    text-decoration: none;
+    color: white;
+  }
+
+  i {
+    font-size: 12px;
+  }
+}
+
+// Outras classes compartilhadas podem ser adicionadas aqui
